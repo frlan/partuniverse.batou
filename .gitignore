@@ -1,2 +1,5 @@
 *.pyc
 *.swp
+.batou-lock
+.batou
+
