@@ -13,7 +13,7 @@ class GitCheckout(batou.component.Component):
     id_rsa_pub = None
 
     def configure(self):
-        self.provide('gitcheckout', self)
+        #self.provide('gitcheckout', self)
 
         self += batou.lib.git.Clone(
             self.git_clone_url,
