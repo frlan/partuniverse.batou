@@ -1,1 +1,31 @@
 # Django-Deployment with batou
+
+This is an example deployment for partuniverse with batou. You might use it to build up your own batou-deployment or having a test environment.
+
+## Dependencies
+
+To run batou itself you only need
+
+* Python 2.7.x > 2.7.9 and
+* python-virtualenv
+* gpg(2)
+
+installed on your system. batou is creating a virtualenv and downloading everything else needed from pypi.
+
+To run your own local (development) box provided by this repository you will also need:
+
+* vagrant (tested with vagrant 1.8+)
+* VirtualBox
+
+## Vagrant box
+
+The provided vagrant-box is based on [Flying Circus ](https://flyingcircus.io) NixOS box. To make usage of run:
+
+```
+$ vagrant up
+$ ./batou deploy vagrant
+```
+
+vagrant will create a virtual machine using VirtualBox as defined
+inside `Vagrantfile` and running configuration as defined in
+`provision.nix`.
