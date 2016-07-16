@@ -11,6 +11,7 @@ class Django (batou.component.Component):
 
     # the user the django process should run on.
     user = batou.component.Attribute(str, 'partuniverse')
+    group = batou.component.Attribute(str, 'partuniverse')
     address = batou.utils.Address('127.0.0.1', 9001)
 
     def configure(self):
@@ -48,6 +49,13 @@ class Django (batou.component.Component):
             link_to=self.prepared_path
         )
 
+        # Systemd
+        self += batou.lib.file.File(
+            '/etc/local/systemd/partuniverse.socket',
+            source='resources/partuniverse.socket')
+        self += batou.lib.file.File(
+            '/etc/local/systemd/partuniverse.service',
+            source='resources/partuniverse.service')
         self += batou_ext.nix.Rebuild()
 
 
