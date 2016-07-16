@@ -1,0 +1,21 @@
+[Unit]
+Description=partuniverse service definition
+Requires=nginx.service partuniverse.socket
+Before=nginx.service
+After=network.target
+
+[Service]
+PIDFile=/run/partuniverse/pid
+PermissionsStartOnly=true
+User=partuniverse
+Group=partuniverse
+WorkingDirectory={{component.workdir}}/current/partuniverse
+ExecStartPre=/bin/mkdir -p /run/partuniverse
+ExecStartPre=/bin/chown -R {{component.user}}:{{component.group}} /run/partuniverse
+ExecStart={{component.workdir}})bin/gunicorn --pid /run/partuniverse/pid partuniverse.wsgi:application --bind 127.0.0.1:8005
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s TERM $MAINPID
+
+[Install]
+# When should this service be triggered? (this is the equivalent of SysV's runlevel 3)
+WantedBy=multi-user.target
