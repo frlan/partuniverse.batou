@@ -17,7 +17,7 @@ class Django (batou.component.Component):
     def configure(self):
         self.database = self.require_one('postgresql')
         self.checkout = self.require_one('gitcheckout')
-        #self.provide('django', self)
+        self.provide('django', self)
 
         self.prepared_path = 'prepared-{}'.format(self.checkout.git_revision)
 
