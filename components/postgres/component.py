@@ -12,7 +12,7 @@ class PostgreSQL(batou.component.Component):
 
     def configure(self):
         self.address = batou.utils.Address(self.host.fqdn, 5432)
-        #self.provide('postgresql', self)
+        self.provide('postgresql', self)
 
         self += batou_ext.postgres.User(self.username, password=self.password)
         self += batou_ext.postgres.DB(self.database, owner=self.username)
