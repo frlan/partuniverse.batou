@@ -20,6 +20,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision :shell, \
     :inline => "
+    mkdir -p /var/partuniverse
     nix-channel --add https://hydra.flyingcircus.io/channels/branches/fc-15.09-production// nixos
     nix-channel --update", \
     :run => "always"
