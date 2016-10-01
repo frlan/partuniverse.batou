@@ -7,7 +7,8 @@ import batou.utils
 import batou_ext.nix
 import os
 
-class Django (batou.component.Component):
+
+class Django(batou.component.Component):
 
     # the user the django process should run on.
     user = batou.component.Attribute(str, 'partuniverse')
@@ -39,10 +40,9 @@ class Django (batou.component.Component):
             'psycopg2',
             version='2.6.2')
 
-
         self += DjangoBuild()
 
-        #Ensure, we have a symlink to current code
+        # Ensure, we have a symlink to current code
         self += batou.lib.file.File(
             'current',
             ensure='symlink',
