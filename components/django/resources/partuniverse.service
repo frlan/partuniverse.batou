@@ -10,7 +10,8 @@ PermissionsStartOnly=true
 User=partuniverse
 Group=partuniverse
 WorkingDirectory={{component.workdir}}/current/partuniverse
-ExecStart={{component.workdir}})bin/gunicorn --pid /run/partuniverse/pid partuniverse.wsgi:application --bind 127.0.0.1:8005
+ExecStartPre=${coreutils}/bin/mkdir -p /run/partuniverse
+ExecStart={{component.workdir}}/bin/gunicorn --pid /run/partuniverse/pid partuniverse.wsgi:application --bind 127.0.0.1:8005
 ExecReload=/bin/kill -s HUP $MAINPID
 ExecStop=/bin/kill -s TERM $MAINPID
 
