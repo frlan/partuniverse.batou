@@ -22,8 +22,6 @@ class Django(batou.component.Component):
 
         self.prepared_path = 'prepared-{}'.format(self.checkout.git_revision)
 
-        self += batou.c.dotprofile.DotProfile()
-
         self += batou.lib.file.SyncDirectory(
             self.prepared_path,
             source=self.checkout.git_target)
