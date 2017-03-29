@@ -15,7 +15,7 @@ import subprocess
 # download and copy this file to bootstrap a new batou installation.
 BOOTSTRAP_VERSION_MARKER = '{' + '{version}' + '}'
 
-version = os.environ.get('BATOU_VERSION', '1.3.5')
+version = os.environ.get('BATOU_VERSION', '1.5a3')
 develop = os.environ.get('BATOU_DEVELOP', '')
 
 
@@ -51,6 +51,11 @@ os.chdir(base)
 # clear PYTHONPATH variable to get a defined environment
 if 'PYTHONPATH' in os.environ:
     del os.environ['PYTHONPATH']
+
+if '--reset' in sys.argv:
+    print "Resetting batou env ..."
+    cmd('rm -rf .batou')
+
 
 # Do we have a virtualenv?
 if not os.path.exists(base + '/.batou'):
