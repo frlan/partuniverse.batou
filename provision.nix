@@ -7,7 +7,7 @@
   flyingcircus.agent.steps = "--channel";
 
   flyingcircus.roles.nginx.enable = true;
-  flyingcircus.roles.postgresql94.enable = true;
+  flyingcircus.roles.postgresql96.enable = true;
   networking.firewall.enable = false;
 
   # We want that postgres is listen everywhere in vagrant. Default on
